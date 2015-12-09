@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <title>lajax demo</title>
   <style>
+    body {
+      min-height: 100vh;
+    }
     a {
       display: inline-block;
       padding: 5px 10px;
@@ -15,9 +18,17 @@
   </style>
 </head>
 <body>
-  <a href="javascript:;" id="ajax-button">start ajax</a>
+  <a href="javascript:;" id="ajax-button">
+    <span class="text">
+      button loading
+    </span>
+  </a>
+  <a href="javascript:;" id="ajax-global">
+    <span class="text">
+      global loading
+    </span>
+  </a>
   <div id="result"></div>
-  <div id="loading"></div>
   <script src="/dist/example.js"></script>
 </body>
 </html>

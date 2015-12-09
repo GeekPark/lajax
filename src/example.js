@@ -1,26 +1,32 @@
 import $ from 'jquery';
-import lajax from './index';
+import { lajax, lajaxGlobal } from './index';
 
-lajax.config();
-lajax.global();
+// using lajaxGlobal
+lajaxGlobal({
+  _ajaxStart: () => console.log('start'),
+  _ajaxEnd: () => console.log('end'),
+});
 
-lajax();
+$('#ajax-global').on('click', function () {
+  $.ajax({
+    url: 'test.json',
+  }).done(data => {
+    $('#result').text(JSON.stringify(data));
+  });
+});
 
-// const $loading = $('#loading');
-//
-// // lajax({ url: 'test.json' });
-//
-// $(document).ajaxStart(function () {
-//   $loading.show();
-// })
-// .ajaxStop(function () {
-//   $loading.hide();
-// });
-//
-// $('#ajax-button').on('click', () => {
-//   $.ajax({
-//     url: 'test.json',
-//   }).done(data => {
-//     $('#result').text(JSON.stringify(data));
-//   });
-// });
+// using button loading
+$('#ajax-button').on('click', function () {
+  const $this = $(this);
+  lajax({
+    _target: $(this),
+    _ajaxStart: () => $this.find('.text').css('opacity', 0),
+    _ajaxEnd: () => $this.find('.text').css('opacity', 1),
+    _style: {
+      radius: 4,
+    },
+    url: 'test.json',
+  }).done(data => {
+    $('#result').text(JSON.stringify(data));
+  });
+});

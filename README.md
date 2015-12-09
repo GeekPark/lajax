@@ -9,12 +9,15 @@ lajax - $.ajax with loading
 import { lajax, lajaxGlobal } from '@geekpark/lajax'
 ```
 
-#### Step 2 [ Two ways]
+#### Step 2 [ Two ways, Can work together]
 ```javascript
 // initial before using $.ajax
+// all params are optional
 lajaxGlobal({
-  _target: $('#ajax-status-wrap'),  // default to $('body'), center within screen
-  _style: spinConfig                // loading icon config http://spin.js.org/
+  _target: $('body'),               // loading will center within target
+  _style: spinConfig,               // loading icon config http://spin.js.org/
+  _ajaxStart: null,
+  _ajaxEnd: null
 });
 
 // loading will automatic show when all $.ajax/getJSON/post start
@@ -26,10 +29,12 @@ $.ajax(...);
 // lajax just a $.ajax wrapper
 $('#button').click(function() {
   lajax({
-	_target: $(this),               // where you want show loading ?
-	_style: spinConfig              // loading icon config http://spin.js.org/
+	_target: $(this),               // required, where you want show loading ?
+	_style: optional,
+	_ajaxStart: optional,
+	_ajaxEnd: optional
 	url: 'test.json',
-	method: 'PUT'
+	method: 'PUT',
 	// ... Other $.ajax params
   }).done(function(data) {
 	...
