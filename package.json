@@ -1,5 +1,5 @@
 {
-  "name": "@geekpark/ajax-loading",
+  "name": "@geekpark/lajax",
   "version": "1.0.0",
   "description": "Detect browser by UA or Viewport",
   "main": "index.js",
