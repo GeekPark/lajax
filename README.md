@@ -9,7 +9,7 @@ lajax - $.ajax with loading
 import { lajax, lajaxGlobal } from '@geekpark/lajax'
 ```
 
-#### Step 2 [ Two ways, Can work together]
+#### Step 2 [ Two ways, Work together]
 ```javascript
 // initial before using $.ajax
 // all params are optional
